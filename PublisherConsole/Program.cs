@@ -13,13 +13,15 @@ namespace PublisherConsole
             {
                 context.Database.EnsureCreated();
             }
+
+            var _context = new PubContext();
             
-            WriteAllAuthors();
-            AddAuthor("Aaron", "Jackson");
-            AddAuthorWithBooks("Aaron", "Jackson", "Learning EF Core", new DateTime(2022, 11, 25));
-            var author = GetAuthor(3);
-            AddBookToExistingAuthor(author, "Learning EF Core 2nd Edition", new DateTime(2022, 11, 28));
-            WriteAllAuthorsWithBooks();
+            WriteAllAuthors(_context);
+            AddAuthor(_context,"Aaron", "Jackson");
+            AddAuthorWithBooks(_context, "Aaron", "Jackson", "Learning EF Core", new DateTime(2022, 11, 25));
+            var author = GetAuthor(_context,3);
+            AddBookToExistingAuthor(_context,author, "Learning EF Core 2nd Edition", new DateTime(2022, 11, 28));
+            WriteAllAuthorsWithBooks(_context);
 
             
         }
